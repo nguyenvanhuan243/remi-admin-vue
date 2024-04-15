@@ -74,34 +74,6 @@ export default [
         to: '/buttons/dropdowns',
       },
     ],
-  },
-  {
-    component: 'CNavGroup',
-    name: 'Notifications',
-    to: '/notifications',
-    icon: 'cil-bell',
-    items: [
-      {
-        component: 'CNavItem',
-        name: 'Alerts',
-        to: '/notifications/alerts',
-      },
-      {
-        component: 'CNavItem',
-        name: 'Badges',
-        to: '/notifications/badges',
-      },
-      {
-        component: 'CNavItem',
-        name: 'Modals',
-        to: '/notifications/modals',
-      },
-      {
-        component: 'CNavItem',
-        name: 'Toasts',
-        to: '/notifications/toasts',
-      },
-    ]
   }
   // },
   // {
