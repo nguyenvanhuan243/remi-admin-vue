@@ -48,7 +48,7 @@ jobs:
         run: |
           docker push nguyenvanhuan243/remi_admin_vuejs:latest
 
-      # - name: Deploy to Render Server (Master)
-      #   if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-      #   run: |
-      #     curl -X GET https://api.render.com/deploy/srv-cod15da0si5c738nra3g?key=eGtlwOezsDI
+      - name: Deploy to Netlify Server (Master)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: |
+          curl -X GET https://api.netlify.com/build_hooks/661c944eed81fcef8e0394b9
