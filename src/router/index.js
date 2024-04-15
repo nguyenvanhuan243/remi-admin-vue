@@ -108,8 +108,13 @@ const routes = [
           },
           {
             path: '/base/users',
-            name: 'Tables',
-            component: () => import('@/views/base/Tables.vue'),
+            name: 'Users',
+            component: () => import('@/views/base/Users.vue'),
+          },
+          {
+            path: '/base/admins',
+            name: 'Admins',
+            component: () => import('@/views/base/Admins.vue'),
           },
           {
             path: '/base/tooltips',

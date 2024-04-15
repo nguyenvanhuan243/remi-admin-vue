@@ -23,7 +23,7 @@ export default [
       {
         component: 'CNavItem',
         name: 'Admin Users',
-        to: '/base/list-groups',
+        to: '/base/admins',
       }
     ],
   },
