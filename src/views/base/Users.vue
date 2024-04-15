@@ -6,7 +6,7 @@
           <strong>User Management</strong>
         </CCardHeader>
         <CCardBody>
-          <CTable striped>
+          <CTable v-if="!loading" striped>
             <CTableHead>
               <CTableRow>
                 <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -28,6 +28,7 @@
               </CTableRow>
             </CTableBody>
           </CTable>
+          <CSpinner v-if="loading" />
         </CCardBody>
       </CCard>
     </CCol>
@@ -41,11 +42,14 @@ export default {
   name: "Tables",
   data() {
     return {
-      userList: [] // Initialize userList to an empty array
+      userList: [], // Initialize userList to an empty array
+      loading: false // Initial loading state
     };
   },
   async created() {
     try {
+      this.loading = true; // Set loading state to true before fetching data
+
       // Make an HTTP GET request to fetch users data
       const response = await axios.get("https://remi-api.onrender.com/api/v1/admin/users", {
         headers: {
@@ -57,16 +61,20 @@ export default {
       this.userList = response.data; // Assuming response.data is an array of user objects
     } catch (error) {
       console.error("Error fetching users:", error);
+    } finally {
+      this.loading = false; // Set loading state to false after fetching data (whether successful or not)
     }
   },
   methods: {
     async confirmDelete(userId) {
       if (window.confirm("Are you sure you want to delete this user?")) {
-        this.deleteUser(userId);
+        await this.deleteUser(userId);
       }
     },
     async deleteUser(userId) {
       try {
+        this.loading = true; // Set loading state to true before delete operation
+
         // Make an HTTP DELETE request to delete user by ID
         await axios.delete(`https://remi-api.onrender.com/api/v1/admin/users/${userId}`, {
           headers: {
@@ -78,6 +86,8 @@ export default {
         this.userList = this.userList.filter(user => user.id !== userId);
       } catch (error) {
         console.error(`Error deleting user with ID ${userId}:`, error);
+      } finally {
+        this.loading = false; // Set loading state to false after delete operation (whether successful or not)
       }
     }
   }

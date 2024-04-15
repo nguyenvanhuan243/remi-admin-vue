@@ -6,7 +6,11 @@
           <strong>User Management</strong>
         </CCardHeader>
         <CCardBody>
-          <CTable striped>
+          <!-- Display loading spinner when 'loading' is true -->
+          <CSpinner v-if="loading" />
+
+          <!-- Display table when 'loading' is false and userList is not empty -->
+          <CTable v-else-if="userList.length > 0" striped>
             <CTableHead>
               <CTableRow>
                 <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -24,6 +28,9 @@
               </CTableRow>
             </CTableBody>
           </CTable>
+
+          <!-- Display message when 'loading' is false and userList is empty -->
+          <p v-else>No users found.</p>
         </CCardBody>
       </CCard>
     </CCol>
@@ -31,13 +38,29 @@
 </template>
 
 <script>
+import { CRow, CCol, CCard, CCardHeader, CCardBody, CTable, CTableHead, CTableRow, CTableHeaderCell, CTableBody, CTableDataCell, CSpinner } from "@coreui/vue";
 import axios from "axios";
 
 export default {
   name: "Tables",
+  components: {
+    CRow,
+    CCol,
+    CCard,
+    CCardHeader,
+    CCardBody,
+    CTable,
+    CTableHead,
+    CTableRow,
+    CTableHeaderCell,
+    CTableBody,
+    CTableDataCell,
+    CSpinner
+  },
   data() {
     return {
-      userList: [] // Initialize userList to an empty array
+      userList: [], // Initialize userList to an empty array
+      loading: true // Initialize loading state to true
     };
   },
   async created() {
@@ -51,6 +74,8 @@ export default {
       this.userList = response.data; // Assuming response.data is an array of user objects
     } catch (error) {
       console.error("Error fetching users:", error);
+    } finally {
+      this.loading = false; // Set loading state to false after fetching data (whether successful or not)
     }
   }
 };
