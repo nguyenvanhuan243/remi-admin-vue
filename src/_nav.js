@@ -18,7 +18,7 @@ export default [
       {
         component: 'CNavItem',
         name: 'Normal Users',
-        to: '/base/accordion',
+        to: '/base/users',
       },
       {
         component: 'CNavItem',

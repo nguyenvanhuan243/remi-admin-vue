@@ -107,7 +107,7 @@ const routes = [
             component: () => import('@/views/base/Spinners.vue'),
           },
           {
-            path: '/base/tables',
+            path: '/base/users',
             name: 'Tables',
             component: () => import('@/views/base/Tables.vue'),
           },
