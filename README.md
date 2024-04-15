@@ -3,23 +3,10 @@
 # Node version: >= 18
 
 ``` bash
-$ npm install
-```
-
-or
-
-``` bash
 $ yarn install
 ```
 
 ### Basic usage
-
-``` bash
-# dev server with hot reload at http://localhost:3000
-$ npm run dev
-```
-
-or 
 
 ``` bash
 # dev server with hot reload at http://localhost:3000
@@ -34,20 +21,10 @@ Run `build` to build the project. The build artifacts will be stored in the `bui
 
 ```bash
 # build for production with minification
-$ npm run build
-```
-
-or
-
-```bash
-# build for production with minification
 $ yarn build
 ```
 
 ## What's included
-
-Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
-
 ```
 remi-admin-vuejs
 ├── public/          # static files
