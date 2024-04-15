@@ -4,7 +4,7 @@
       <CAvatar :src="avatar" size="md" />
     </CDropdownToggle>
     <CDropdownMenu class="pt-0">
-      <CDropdownHeader
+      <!-- <CDropdownHeader
         component="h6"
         class="bg-body-secondary text-body-secondary fw-semibold my-2"
       >Settings</CDropdownHeader>
@@ -21,8 +21,8 @@
       <CDropdownItem>
         <CIcon icon="cil-file" />Projects
         <CBadge color="primary" class="ms-auto">{{ itemsCount }}</CBadge>
-      </CDropdownItem>
-      <CDropdownDivider />
+      </CDropdownItem> -->
+      <!-- <CDropdownDivider /> -->
       <CDropdownItem @click="logout">
         <CIcon icon="cil-lock-locked" />Logout
       </CDropdownItem>
