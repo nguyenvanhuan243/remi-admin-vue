@@ -13,6 +13,7 @@
                 <CTableHeaderCell scope="col">ID</CTableHeaderCell>
                 <CTableHeaderCell scope="col">Email</CTableHeaderCell>
                 <CTableHeaderCell scope="col">Created At</CTableHeaderCell>
+                <CTableHeaderCell scope="col">Actions</CTableHeaderCell>
               </CTableRow>
             </CTableHead>
             <CTableBody>
@@ -21,6 +22,9 @@
                 <CTableDataCell>{{ user.id }}</CTableDataCell>
                 <CTableDataCell>{{ user.email }}</CTableDataCell>
                 <CTableDataCell>{{ user.created_at }}</CTableDataCell>
+                <CTableDataCell>
+                  <CButton @click="confirmDelete(user.id)" color="danger">Delete</CButton>
+                </CTableDataCell>
               </CTableRow>
             </CTableBody>
           </CTable>
@@ -43,14 +47,38 @@ export default {
   async created() {
     try {
       // Make an HTTP GET request to fetch users data
-      const response = await axios.get(
-        "https://remi-api.onrender.com/api/v1/admin/users"
-      );
+      const response = await axios.get("https://remi-api.onrender.com/api/v1/admin/users", {
+        headers: {
+          Authorization: localStorage.getItem("adminAccessToken") // Include auth token in headers
+        }
+      });
 
       // Update the userList with the fetched user data
       this.userList = response.data; // Assuming response.data is an array of user objects
     } catch (error) {
       console.error("Error fetching users:", error);
+    }
+  },
+  methods: {
+    async confirmDelete(userId) {
+      if (window.confirm("Are you sure you want to delete this user?")) {
+        this.deleteUser(userId);
+      }
+    },
+    async deleteUser(userId) {
+      try {
+        // Make an HTTP DELETE request to delete user by ID
+        await axios.delete(`https://remi-api.onrender.com/api/v1/admin/users/${userId}`, {
+          headers: {
+            Authorization: localStorage.getItem("adminAccessToken") // Include auth token in headers
+          }
+        });
+
+        // Remove deleted user from userList
+        this.userList = this.userList.filter(user => user.id !== userId);
+      } catch (error) {
+        console.error(`Error deleting user with ID ${userId}:`, error);
+      }
     }
   }
 };
