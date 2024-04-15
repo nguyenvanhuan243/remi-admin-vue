@@ -51,11 +51,14 @@ export default {
       this.loading = true; // Set loading state to true before fetching data
 
       // Make an HTTP GET request to fetch users data
-      const response = await axios.get("https://remi-api.onrender.com/api/v1/admin/users", {
-        headers: {
-          Authorization: localStorage.getItem("adminAccessToken") // Include auth token in headers
+      const response = await axios.get(
+        "https://remi-api.onrender.com/api/v1/admin/users",
+        {
+          headers: {
+            Authorization: localStorage.getItem("adminAccessToken") // Include auth token in headers
+          }
         }
-      });
+      );
 
       // Update the userList with the fetched user data
       this.userList = response.data; // Assuming response.data is an array of user objects
@@ -76,11 +79,14 @@ export default {
         this.loading = true; // Set loading state to true before delete operation
 
         // Make an HTTP DELETE request to delete user by ID
-        await axios.delete(`https://remi-api.onrender.com/api/v1/admin/users/${userId}`, {
-          headers: {
-            Authorization: localStorage.getItem("adminAccessToken") // Include auth token in headers
+        await axios.delete(
+          `https://remi-api.onrender.com/api/v1/admin/users/${userId}`,
+          {
+            headers: {
+              Authorization: localStorage.getItem("adminAccessToken") // Include auth token in headers
+            }
           }
-        });
+        );
 
         // Remove deleted user from userList
         this.userList = this.userList.filter(user => user.id !== userId);

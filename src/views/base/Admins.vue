@@ -38,7 +38,20 @@
 </template>
 
 <script>
-import { CRow, CCol, CCard, CCardHeader, CCardBody, CTable, CTableHead, CTableRow, CTableHeaderCell, CTableBody, CTableDataCell, CSpinner } from "@coreui/vue";
+import {
+  CRow,
+  CCol,
+  CCard,
+  CCardHeader,
+  CCardBody,
+  CTable,
+  CTableHead,
+  CTableRow,
+  CTableHeaderCell,
+  CTableBody,
+  CTableDataCell,
+  CSpinner
+} from "@coreui/vue";
 import axios from "axios";
 
 export default {
