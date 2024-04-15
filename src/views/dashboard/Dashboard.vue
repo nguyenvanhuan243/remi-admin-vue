@@ -141,7 +141,7 @@ export default {
 
     const adminAccessToken = localStorage.getItem("adminAccessToken")
     if (!adminAccessToken) {
-      return window.location.replace("/login#/pages/login")
+      return window.location.href = "#/pages/login"
     }
     return {
       tableExample,
