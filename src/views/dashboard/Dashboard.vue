@@ -139,6 +139,10 @@ export default {
       },
     ]
 
+    const adminAccessToken = localStorage.getItem("adminAccessToken")
+    if (!adminAccessToken) {
+      return window.location.replace("/login#/pages/login")
+    }
     return {
       tableExample,
       progressGroupExample1,
