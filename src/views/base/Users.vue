@@ -37,6 +37,7 @@
 
 <script>
 import axios from "axios";
+import { getAdminAccessToken } from "../../../utils/localStorageUtils"; // Import the utility function
 
 export default {
   name: "Tables",
@@ -51,14 +52,7 @@ export default {
       this.loading = true; // Set loading state to true before fetching data
 
       // Make an HTTP GET request to fetch users data
-      const response = await axios.get(
-        "https://remi-api.onrender.com/api/v1/admin/users",
-        {
-          headers: {
-            Authorization: localStorage.getItem("adminAccessToken") // Include auth token in headers
-          }
-        }
-      );
+      const response = await axios.get("https://remi-api.onrender.com/api/v1/admin/users");
 
       // Update the userList with the fetched user data
       this.userList = response.data; // Assuming response.data is an array of user objects
@@ -83,7 +77,7 @@ export default {
           `https://remi-api.onrender.com/api/v1/admin/users/${userId}`,
           {
             headers: {
-              Authorization: localStorage.getItem("adminAccessToken") // Include auth token in headers
+              Authorization: getAdminAccessToken() // Include auth token in headers
             }
           }
         );
