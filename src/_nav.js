@@ -17,39 +17,14 @@ export default [
     items: [
       {
         component: 'CNavItem',
-        name: 'Accordion',
+        name: 'Normal Users',
         to: '/base/accordion',
       },
       {
         component: 'CNavItem',
-        name: 'Breadcrumbs',
-        to: '/base/breadcrumbs',
-      },
-      {
-        component: 'CNavItem',
-        name: 'Cards',
-        to: '/base/cards',
-      },
-      {
-        component: 'CNavItem',
-        name: 'Carousels',
-        to: '/base/carousels',
-      },
-      {
-        component: 'CNavItem',
-        name: 'Collapses',
-        to: '/base/collapses',
-      },
-      {
-        component: 'CNavItem',
-        name: 'List Groups',
+        name: 'Admin Users',
         to: '/base/list-groups',
-      },
-      {
-        component: 'CNavItem',
-        name: 'Navs & Tabs',
-        to: '/base/navs',
-      },
+      }
     ],
   },
   {
