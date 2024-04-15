@@ -21,7 +21,7 @@
       <CDropdownItem>
         <CIcon icon="cil-file" />Projects
         <CBadge color="primary" class="ms-auto">{{ itemsCount }}</CBadge>
-      </CDropdownItem> -->
+      </CDropdownItem>-->
       <!-- <CDropdownDivider /> -->
       <CDropdownItem @click="logout">
         <CIcon icon="cil-lock-locked" />Logout
@@ -33,6 +33,7 @@
 <script>
 import { defineComponent } from "vue"; // Import defineComponent for composition API
 import avatar from "@/assets/images/avatars/8.jpg";
+import { removeAdminAccessToken } from "../../utils/localStorageUtils"; // Import the utility function
 
 export default defineComponent({
   name: "AppHeaderDropdownAccnt",
@@ -40,8 +41,8 @@ export default defineComponent({
     const itemsCount = 42;
 
     const logout = () => {
-      localStorage.removeItem("adminAccessToken");
-      window.location.href = "/login"; // Change '/login' to your actual login page URL
+      removeAdminAccessToken();
+      window.location.href = "#/pages/login";
     };
 
     return {

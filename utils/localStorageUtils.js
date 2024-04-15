@@ -4,3 +4,7 @@
 export function getAdminAccessToken() {
 	return localStorage.getItem("adminAccessToken") || ""; // Return empty string if token is not found
 }
+
+export function removeAdminAccessToken() {
+	return localStorage.removeItem("adminAccessToken")
+}
