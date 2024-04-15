@@ -37,17 +37,7 @@ export default [
         component: 'CNavItem',
         name: 'Buttons',
         to: '/buttons/standard-buttons',
-      },
-      {
-        component: 'CNavItem',
-        name: 'Button Groups',
-        to: '/buttons/button-groups',
-      },
-      {
-        component: 'CNavItem',
-        name: 'Dropdowns',
-        to: '/buttons/dropdowns',
-      },
+      }
     ],
   }
 ]
